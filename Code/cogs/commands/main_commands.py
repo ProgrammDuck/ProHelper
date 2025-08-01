@@ -36,7 +36,7 @@ class main(commands.Cog):
     async def about(self, ctx):
         msg = discord.Embed(
             title='Information',
-            description='This is a open-source bot\n - [soon](https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran)\n   - created by <@916019025945976842>. He is my Dad). I have only 1 developer. You can change this bot for your hope, This all.',
+            description='This is a open-source bot\n - [Github](https://github.com/ProgrammDuck/ProHelper)\n   - created by <@916019025945976842>. He is my Dad). I have only 1 developer. You can change this bot for your hope, This all.',
             colour=discord.Colour.blue()
         )
 
