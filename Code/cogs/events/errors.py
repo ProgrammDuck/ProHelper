@@ -42,6 +42,10 @@ class errors(commands.Cog):
             msg = eremb.copy()
             msg.description = 'Member not found.'
             await ctx.reply(embed=msg)
+        elif isinstance(error, SyntaxError):
+            msg = eremb.copy()
+            msg.description = 'Syntax error'
+            await ctx.reply(embed=msg)
         elif isinstance(error, commands.CommandError):
             if 'yourself' in str(error):
                 msg = eremb.copy()

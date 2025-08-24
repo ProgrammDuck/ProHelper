@@ -13,12 +13,15 @@ token = os.getenv("TOKEN")
 prefix = os.getenv("PREFIX")
 
 load_cogs = [
-    'cogs.commands.main_commands',
-    'cogs.events.errors',
-    'cogs.commands.fun',
-    'cogs.commands.utils.owner',
-    'cogs.commands.misc',
-    'cogs.commands.images_commands',
+    'Code.cogs.commands.main_commands',
+    'Code.cogs.events.errors',
+    'Code.cogs.commands.fun',
+    'Code.cogs.commands.utils.owner',
+    'Code.cogs.commands.misc',
+    'Code.cogs.commands.cat_api',
+    'Code.cogs.commands.joke_api',
+    'Code.cogs.commands.qr_command',
+    'Code.cogs.commands.translator',
 ]
 
 

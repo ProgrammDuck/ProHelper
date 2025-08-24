@@ -8,13 +8,13 @@ import random
 
 from Code.embeds import scemb, eremb
 
-class images_commands(commands.Cog):
+class cat_api(commands.Cog):
     def __init__(self, bot):
         self.bot: commands.Bot = bot
         self.logger = logging.getLogger(__name__)
 
     @commands.hybrid_command('meow', help='Return a cute and fun images of cats <3')
-    @commands.cooldown(1, 10, commands.BucketType.user)
+    @commands.cooldown(1, 3, commands.BucketType.user)
     async def meow(self, ctx):
         try:
             async with aiohttp.ClientSession() as session:
@@ -30,7 +30,7 @@ class images_commands(commands.Cog):
                         )
                         
                         embed.set_image(url=image_url)
-                        embed.set_footer(text=f"The \"{self.bot.command_prefix}meow\" command provides random cat images using a public API. This is done through integration with The Cat API, one of the most trusted sources of cat images on the web. (Powered by The Cat API - thecatapi.com)")
+                        # embed.set_footer(text=f"The \"{self.bot.command_prefix}meow\" command provides random cat images using a public API. This is done through integration with The Cat API, one of the most trusted sources of cat images on the web. (Powered by The Cat API - thecatapi.com)")
                         await ctx.send(embed=embed)
                     else:
                         msg = eremb.copy()
@@ -43,4 +43,4 @@ class images_commands(commands.Cog):
             await ctx.send(embed=msg)
             
 async def setup(bot):
-    await bot.add_cog(images_commands(bot))
+    await bot.add_cog(cat_api(bot))

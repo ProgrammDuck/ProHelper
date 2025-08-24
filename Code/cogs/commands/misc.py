@@ -26,46 +26,53 @@ class misc(commands.Cog):
     
     @commands.hybrid_command('userinfo', help='Send user information.', aliases=['playerinfo', 'plrinfo'])
     @commands.cooldown(1, 3, commands.BucketType.user)
-    async def userinfo(self, ctx: commands.Context, member: discord.Member = None):
-        member = member or ctx.author
-        
+    async def userinfo(self, ctx: commands.Context, user: discord.User = None):
+        user = user or ctx.author
+        guild = ctx.guild
+
         msg = discord.Embed(
-            description=f'{member.name.capitalize()}\'s Information',
+            description=f'{user.name.capitalize()}\'s Information',
             colour=discord.Colour.brand_green()
         )
-        
-        roles = [role for role in member.roles if role != ctx.guild.default_role]
-        
-        if roles:
-            roles_str = "\n".join([role.mention for role in roles[:10]])
-            if len(roles) > 10:
-                roles_str += f"\n(+{len(roles)-10} more)"
 
-            msg.add_field(name=f"Roles [{len(roles)}]", value=roles_str, inline=True)
-        else:
-            msg.add_field(name="Roles", value="No roles", inline=True)
-        
-        created_timestamp = int(member.created_at.timestamp())
+
+        member = guild.get_member(user.id)
+        if member:
+            roles = [role for role in member.roles if role != ctx.guild.default_role]
+
+            if roles:
+                roles_str = "\n".join([role.mention for role in roles[:10]])
+                if len(roles) > 10:
+                    roles_str += f"\n(+{len(roles) - 10} more)"
+
+                msg.add_field(name=f"Roles [{len(roles)}]", value=roles_str, inline=True)
+            else:
+                msg.add_field(name="Roles", value="No roles", inline=True)
+
+            joined_timestamp = int(member.joined_at.timestamp())
+            msg.add_field(
+                name='Join date',
+                value=f'<t:{joined_timestamp}:F> (<t:{joined_timestamp}:R>)',
+                inline=True
+            )
+
+        created_timestamp = int(user.created_at.timestamp())
         msg.add_field(
-            name="Create date", 
-            value=f"<t:{created_timestamp}:F> (<t:{created_timestamp}:R>)", 
+            name="Create date",
+            value=f"<t:{created_timestamp}:F> (<t:{created_timestamp}:R>)",
             inline=True
         )
-        
-        joined_timestamp = int(member.joined_at.timestamp())
-        msg.add_field(
-            name='Join date',
-            value=f'<t:{joined_timestamp}:F> (<t:{joined_timestamp}:R>)',
-            inline=True
-        )
-        
+
+
+
+
         msg.set_author(
-            name=member.name,
-            icon_url=member.avatar.url
+            name=user.name,
+            icon_url=user.avatar.url
         )
         
         msg.set_footer(
-            text=f'ID: {member.id}'
+            text=f'ID: {user.id}'
         )
         
         await ctx.reply(embed=msg)
