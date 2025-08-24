@@ -5,8 +5,6 @@
     <img src="Sources/img.jpeg" alt="Sources/img.jpeg">
 </div>
 <h2 align="center">🚀 Install</h2>
-
-<h3 align="center">📄 From sources</h3>
 <ol>
     <li>Clone repository:
         <pre><code>git clone https://github.com/ProgrammDuck/ProHelper.git</code></pre>
@@ -22,22 +20,6 @@ PREFIX="$"</code></pre>
         <pre><code>.venv/Scripts/python Code/bot.py</code></pre>
     </li>
 </ol>
-
-<h3 align="center">⚡ From releases</h3>
-<ol>
-    <li>Go to the <a href="https://github.com/ProgrammDuck/GUICalculator/releases">Releases</a> page on GitHub</li>
-    <li>Download the latest release for your system (.exe for Windows or archive for other OS).</li>
-    <li>Extract (if it's an archive) and run the .exe file.</li>
-</ol>
-
-<h2 align="center">📝 Work example</h2>
-<ol>
-    <li>EuREsjpQDi</li>
-    <li>4082307491</li>
-    <li>:\!'%[*'&lt;</li>
-    <li><code>`#KIy6`rKmR</code></li>
-</ol>
-
 
 <h2 align="center">📞 Support</h1>
 <table align="center">
