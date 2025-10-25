@@ -26,11 +26,13 @@ load_cogs = [
 
 
 def main():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler('bot_logs.log'),
+            logging.FileHandler(os.path.join(BASE_DIR, 'bot_logs.log')),
             logging.StreamHandler()
         ]
     )
